@@ -35,7 +35,7 @@ Route::get('/partner',function(){
     return view('information.partner');
 });
 
-Route::get('/createAgency','AgencyController@create');
+Route::post('/createAgency','AgencyController@create');
 
 Route::post('/sendmail','MailController@send');
 Route::get('/strategy/new/{email}','StrategyController@new');

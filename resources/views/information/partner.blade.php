@@ -9,9 +9,9 @@
                 <h2 class="mb-0 h5">Become a Partner</h2>                               
             </div>
             <div class="card-body">
-                <form action="">
+                <form action="{{url('/createAgency')}}" method="POST">
                     <!-- Form -->
-                    <div action="{{url('/createAgency')}}" method="POST">
+                    <div>
                         <label for="exampleInputIcon999">Name</label>
                         <div class="input-group mb-4">
                             <div class="input-group-prepend">
@@ -20,7 +20,7 @@
                                     <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_lLvJxb.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon999" placeholder="name" type="text" aria-label="name">
+                            <input class="form-control" id="exampleInputIcon999" placeholder="name" type="text" value="{{ old('name') }}" aria-label="name">
                         </div>
                     </div>
 
@@ -33,7 +33,7 @@
                                     <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_T4B4be.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon999" placeholder="Company Name" type="text" aria-label="company_name">
+                            <input class="form-control" id="exampleInputIcon998" placeholder="Company Name" value="{{ old('company_name') }}" type="text" aria-label="company_name">
                         </div>
                     </div>
 
@@ -46,7 +46,7 @@
                                     <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_8SdEu9.json"  background="transparent"  speed="1"  style="width:20px ; height:20px ;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon999" placeholder="example@company.com" type="text" aria-label="email adress">
+                            <input class="form-control" id="exampleInputIcon997" placeholder="example@company.com" type="text" value="{{ old('email') }}" aria-label="email adress">
                         </div>
                     </div>
 
@@ -59,7 +59,7 @@
                                     <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_t5KSeU.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon999" placeholder="www.example.com" type="text" aria-label="email adress">
+                            <input class="form-control" id="exampleInputIcon996" placeholder="www.example.com" type="text" value="{{ old('company_website') }}" aria-label="email adress">
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@
                                     <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_0PEZaV.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon999" placeholder="Description" type="text" aria-label="email adress">
+                            <input class="form-control" id="exampleInputIcon995" placeholder="Description" type="text" value="{{ old('description') }}" aria-label="email adress">
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                                     <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_A7qgGq.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon999" placeholder="Portfolio" type="text" aria-label="email adress">
+                            <input class="form-control" id="exampleInputIcon994" placeholder="Portfolio" type="text" value="{{ old('portfolio') }}" aria-label="email adress">
                         </div>
                     </div>
                     <!-- End of Form -->
@@ -100,7 +100,7 @@
                                         <lottie-player src="https://assets8.lottiefiles.com/datafiles/RvQQlJ3ODelSiQi/data.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                     </span>
                                 </div>
-                                <input class="form-control" id="exampleInputPassword345" placeholder="Password" type="password" aria-label="Password" required="">
+                                <input class="form-control" id="exampleInputPassword345" placeholder="Password" type="password" value="{{ old('password') }}" aria-label="Password" required="">
                             </div>
                         </div>
                         <!-- End of Form -->

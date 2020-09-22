@@ -18,10 +18,10 @@
                                 <form action="/sendmail" method="post">
                                     @csrf
                                     <div class="form-group">
-                                    <h2 id="emailHelp" class="form-text text-muted text-center">Looking for a <strong>Digital Marketing</strong>  Strategy? We'll help you.</h2>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter your email here">                                        <small id="emailHelp" class="form-text text-muted text-center">We'll never share your email with anyone else.You will recieve an Email from us attached with password and login page link.</small>
+                                    <h2 id="emailHelp" class="form-text text-muted text-center">Get your customised <strong>Digital Marketing</strong>  Strategy.</h2>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter your email here">                                     
                                         <div class="text-center" style="margin:10px;">
-                                            <button type="submit" class="btn btn-lg btn-primary">Sign Up!</button>
+                                            <button type="submit" class="btn btn-lg btn-primary">Now!</button>
                                         </div>
                                     </div>
                                 </form>
