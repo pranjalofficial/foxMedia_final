@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Hash;
+use App\Agency;
 
 use Illuminate\Http\Request;
 
@@ -38,15 +40,23 @@ class AgencyController extends Controller
     }
 
     public function create(Request $request){
+
+        // var_dump(request('name'));
+        // var_dump(request('email'));
+        // var_dump(request('company_name'));
+        // var_dump(request('company_website'));
+        // var_dump(request('description'));
+        // var_dump(request('portfolio'));
+        // var_dump(request('password'));
         $this->validate($request,[
-            'name'=>'required|string',
-            'email'=>'required|string|email|unique:users,email,'.$id,
-            'phone_no'=>'required|string|size:10|unique:users,phone_no,'.$id,
+            'name'=>'required|string|min:3',
+            'email'=>'required|string|email|unique:users,email,',
             'company_name'=>'required|string',
             'company_website'=>'required|url',
             'description'=>'required|string',
             'portfolio'=>'required|url',
-            'password'=>'nullable|string|confirmed'
+            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'min:6'
         ]);
 
         $agency = new Agency;
@@ -58,10 +68,12 @@ class AgencyController extends Controller
         $agency->company_website = $request->input('company_website');
         $agency->portfolio = $request->input('portfolio');
         $agency->description = $request->input('description');
-        $agency->password = $request->input('password');
+        $password = $request->input('password');    
+        // $agency->password = $request->input('password');
+        $agency->password = Hash::make($password);
         $agency->save();
 
-        return redirect('/home'.auth()->user()->id)->with('success','Profile successfully created!!');
+        return redirect()->back()->with('success','Profile successfully created!');
     }
 
 

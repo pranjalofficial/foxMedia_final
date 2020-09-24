@@ -1,16 +1,25 @@
 @extends('layouts.app')
 @section('content')
-
+@include('layouts.messages')
 <div class="row justify-content-md-around">
-
     <div class="col-12 col-md-6 col-lg-5 mb-5 mb-lg-0">
         <div class="card bg-primary shadow-soft border-light p-4">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="card-header text-center pb-0">
                 <h2 class="mb-0 h5">Become a Partner</h2>                               
             </div>
             <div class="card-body">
-                <form action="{{url('/createAgency')}}" method="POST">
+                <form method="POST" action="{{url('/createAgency')}}">
                     <!-- Form -->
+                    {{ csrf_field()}}
                     <div>
                         <label for="exampleInputIcon999">Name</label>
                         <div class="input-group mb-4">
@@ -20,7 +29,7 @@
                                     <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_lLvJxb.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon999" placeholder="name" type="text" value="{{ old('name') }}" aria-label="name">
+                            <input class="form-control" name="name" id="name" placeholder="name" type="text" value="" aria-label="name">
                         </div>
                     </div>
 
@@ -33,7 +42,7 @@
                                     <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_T4B4be.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon998" placeholder="Company Name" value="{{ old('company_name') }}" type="text" aria-label="company_name">
+                            <input class="form-control" name="company_name" id="company_name" placeholder="Company Name"  value="" type="text" aria-label="company_name">
                         </div>
                     </div>
 
@@ -46,7 +55,7 @@
                                     <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_8SdEu9.json"  background="transparent"  speed="1"  style="width:20px ; height:20px ;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon997" placeholder="example@company.com" type="text" value="{{ old('email') }}" aria-label="email adress">
+                            <input class="form-control"name="email" id="email"  placeholder="example@company.com" type="text" value="" aria-label="email adress">
                         </div>
                     </div>
 
@@ -59,7 +68,7 @@
                                     <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_t5KSeU.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon996" placeholder="www.example.com" type="text" value="{{ old('company_website') }}" aria-label="email adress">
+                            <input class="form-control" name="company_website" id="company_website" placeholder="www.example.com" type="text" value="" aria-label="email adress">
                         </div>
                     </div>
 
@@ -72,7 +81,7 @@
                                     <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_0PEZaV.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon995" placeholder="Description" type="text" value="{{ old('description') }}" aria-label="email adress">
+                            <input class="form-control" name="description" id="description" placeholder="Description" type="text" value="" aria-label="email adress">
                         </div>
                     </div>
 
@@ -85,7 +94,7 @@
                                     <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_A7qgGq.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control" id="exampleInputIcon994" placeholder="Portfolio" type="text" value="{{ old('portfolio') }}" aria-label="email adress">
+                            <input class="form-control" name="portfolio" id="portfolio" placeholder="Portfolio" type="text" value="" aria-label="email adress">
                         </div>
                     </div>
                     <!-- End of Form -->
@@ -100,7 +109,7 @@
                                         <lottie-player src="https://assets8.lottiefiles.com/datafiles/RvQQlJ3ODelSiQi/data.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                     </span>
                                 </div>
-                                <input class="form-control" id="exampleInputPassword345" placeholder="Password" type="password" value="{{ old('password') }}" aria-label="Password" required="">
+                                <input class="form-control" name="password" id="password" placeholder="Password" type="password" value="" aria-label="Password" required="">
                             </div>
                         </div>
                         <!-- End of Form -->
@@ -114,12 +123,12 @@
                                         <lottie-player src="https://assets8.lottiefiles.com/datafiles/RvQQlJ3ODelSiQi/data.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
                                     </span>
                                 </div>
-                                <input class="form-control" id="exampleConfirmPassword712" placeholder="Confirm password" type="password" aria-label="Password" required="">
+                                <input class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Confirm password" type="password" aria-label="Password" required="">
                             </div>
                         </div>
                         <!-- End of Form -->
                     </div>
-                    <button type="submit" class="btn btn-block btn-primary">Sign in</button>
+                    <button type="submit" class="btn btn-block btn-primary">Sign Up as a Partner!</button>
                 </form>
                 <div class="d-block d-sm-flex justify-content-center align-items-center mt-4">
                     <span class="font-weight-normal">

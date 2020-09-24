@@ -21,7 +21,7 @@ class CreateAgenciesTable extends Migration
             $table->string('company_website');
             $table->string('description');
             $table->string('portfolio');
-            $table->string('password');
+            // $table->string('password');
             $table->timestamps();
         });
     }

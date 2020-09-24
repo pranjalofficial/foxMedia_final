@@ -13,6 +13,6 @@ class Agency extends Model
         'company_website',
         'description',
         'portfolio',
-        'password',
+        'password'
     ];
 }
