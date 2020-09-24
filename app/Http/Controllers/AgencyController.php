@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use App\Agency;
+use App\User;
 
 use Illuminate\Http\Request;
 
 class AgencyController extends Controller
 {
     public function dashboard(){
-
+        return view('agencies.dashboard');
     }
 
     public function posts(){
@@ -53,6 +54,7 @@ class AgencyController extends Controller
             'email'=>'required|string|email|unique:users,email,',
             'company_name'=>'required|string',
             'company_website'=>'required|url',
+            'phone'=>'required|min:10|max:10|unique:users,phone_no',
             'description'=>'required|string',
             'portfolio'=>'required|url',
             'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
@@ -72,6 +74,15 @@ class AgencyController extends Controller
         // $agency->password = $request->input('password');
         $agency->password = Hash::make($password);
         $agency->save();
+
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($password);
+        $user->role = 'Agency';
+        $user->phone_no = $request->input('phone');
+        $user->save();
+
 
         return redirect()->back()->with('success','Profile successfully created!');
     }

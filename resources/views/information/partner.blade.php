@@ -1,18 +1,30 @@
 @extends('layouts.app')
 @section('content')
-@include('layouts.messages')
+
 <div class="row justify-content-md-around">
     <div class="col-12 col-md-6 col-lg-5 mb-5 mb-lg-0">
         <div class="card bg-primary shadow-soft border-light p-4">
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{session('success')}}
             </div>
-            @endif
+        @endif
+    
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{session('error')}}
+            </div>
+        @endif
+    
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
             <div class="card-header text-center pb-0">
                 <h2 class="mb-0 h5">Become a Partner</h2>                               
             </div>
@@ -55,7 +67,20 @@
                                     <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_8SdEu9.json"  background="transparent"  speed="1"  style="width:20px ; height:20px ;"  loop  autoplay></lottie-player>
                                 </span>
                             </div>
-                            <input class="form-control"name="email" id="email"  placeholder="example@company.com" type="text" value="" aria-label="email adress">
+                            <input class="form-control" name="email" id="email"  placeholder="example@company.com" type="text" value="" aria-label="email adress">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputIcon999">Phone number</label>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                                    <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_NYp9cT.json"  background="transparent"  speed="1"  style="width: 20px; height: 20px;"  loop  autoplay></lottie-player>
+                                </span>
+                            </div>
+                            <input class="form-control" name="phone" id="phone"  placeholder="Phone number" type="number" value="" aria-label="email adress">
                         </div>
                     </div>
 
